@@ -1,0 +1,3 @@
+#!/bin/bash
+./s > sm
+php i.php

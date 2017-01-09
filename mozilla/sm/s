@@ -1,0 +1,6 @@
+#!/bin/bash
+db=~/$(cat ../dir)/places.sqlite
+sqlite3 ${db}<<EOD
+.mode insert
+select url,title,last_visit_date/1000000 from moz_places where rev_host='pj.oedivocin.www.' and url like 'http://www.nicovideo.jp/watch/%' order by url asc;
+EOD

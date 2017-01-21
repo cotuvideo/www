@@ -1,0 +1,10 @@
+#!/bin/bash
+db=~/$(cat ../dir)/places.sqlite
+
+for url in $(cat r); do
+	sqlite3 ${db} "select id,url,title from moz_places where url='${url}'"
+	id=`sqlite3 ${db} "select id from moz_places where url='${url}'"`
+	sqlite3 ${db} "delete from moz_historyvisits where place_id=${id}"
+	sqlite3 ${db} "delete from moz_places where url='${url}'"
+done
+

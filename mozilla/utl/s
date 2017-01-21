@@ -1,0 +1,8 @@
+#!/bin/bash
+db=~/$(cat ../dir)/places.sqlite
+
+#sqlite3 ${db} "select url from moz_places where rev_host='pj.oedivocin.www.' and url like 'http://www.nicovideo.jp/watch/%'"
+#sqlite3 ${db} "select url from moz_places where url like 'https://twitter.com/%'"
+#sqlite3 ${db} "select url from moz_places where url like 'https://jp.mg5.mail.yahoo.co.jp/neo/launch?%'"
+#sqlite3 ${db} "select url from moz_places where url like 'https://www.google.co.kr/maps/%'"
+#sqlite3 ${db} "select url from moz_places where url like 'https://www.google.co.kr/search?%'"

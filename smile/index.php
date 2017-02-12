@@ -15,6 +15,11 @@ if($mysqli->connect_errno)
 $mysqli->query("SET NAMES utf8") or die($mysqli->error);
 
 echo "<table border=\"1\">\n";
+echo "<tr>\n";
+echo "<td>id</td>\n";
+echo "<td>タイトル</td>\n";
+echo "<td>視聴日時</td>\n";
+echo "</tr>\n";
 
 $files = scandir('./video/');
 foreach($files as $file)

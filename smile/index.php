@@ -1,4 +1,8 @@
 <?PHP
+
+require './log.php';
+access_log();
+
 echo "<html>\n";
 
 echo "<head>\n";

@@ -1,8 +1,24 @@
 #!/bin/bash
-db=~/$(cat ../dir)/places.sqlite
+db=/$(cat ../dir)/places.sqlite
 
 #sqlite3 ${db} "select url from moz_places where rev_host='pj.oedivocin.www.' and url like 'http://www.nicovideo.jp/watch/%'"
 #sqlite3 ${db} "select url from moz_places where url like 'https://twitter.com/%'"
 #sqlite3 ${db} "select url from moz_places where url like 'https://jp.mg5.mail.yahoo.co.jp/neo/launch?%'"
 #sqlite3 ${db} "select url from moz_places where url like 'https://www.google.co.kr/maps/%'"
 #sqlite3 ${db} "select url from moz_places where url like 'https://www.google.co.kr/search?%'"
+
+#nico
+sqlite3 ${db} "select url from moz_places where url like 'http://live.nicovideo.jp/api/getplayerstatus?v=%'"
+sqlite3 ${db} "select url from moz_places where url like 'http://uad.nicovideo.jp/pay/?ox_session_token=%'"
+sqlite3 ${db} "select url from moz_places where url like 'http://www.nicovideo.jp/user/%/fav/user'"
+sqlite3 ${db} "select url from moz_places where url like 'http://www.nicovideo.jp/user/%?nicorepo_user_watchlist_registered&zeromypage_nicorepo'"
+
+#unity
+sqlite3 ${db} "select url from moz_places where url like 'https://docs.unity3d.com/ja/current/ScriptReference%'"
+
+#amazon
+#sqlite3 ${db} "select url from moz_places where url like 'https://www.amazon.co.jp/gp/huc/view.html?ie=UTF8&newItems=%'"
+sqlite3 ${db} "select url from moz_places where url like 'https://www.amazon.co.jp/%'"
+
+
+

@@ -74,7 +74,7 @@ if($row = $result->fetch_assoc())
 	echo "<hr>\n";
 
 	$query = "UPDATE $tbl SET count=$count,user_session='$user_session',user_session_secure='$user_session_secure' WHERE id=$id";
-	$mysqli->query($query) or die($mysqli->error);
+//	$mysqli->query($query) or die($mysqli->error);
 }
 
 $result->free();

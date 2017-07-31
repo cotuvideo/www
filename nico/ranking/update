@@ -1,0 +1,16 @@
+#!/bin/bash
+types=("fav" "view" "res" "mylist")
+periods=("hourly" "daily")
+categorys=("all" "g_ent2" "ent" "music" "sing" "play" "dance" "vocaloid" "nicoindies" "g_life2" "animal" "cooking" "nature" "travel" "sport" "lecture" "drive" "history" "g_politics" "g_tech" "science" "tech" "handcraft" "make" "g_culture2" "anime" "game" "jikkyo" "toho" "imas" "radio" "draw" "g_other" "are" "diary" "other")
+
+for type in ${types[@]}; do
+	for period in ${periods[@]}; do
+		for category in ${categorys[@]}; do
+			dirname=${type}/${period}/${category}
+			filename="${dirname}/`date +'%y%m%d%H%M'`.xml"
+			curl -s -o $filename http://www.nicovideo.jp/ranking/${dirname}?rss=2.0&lang=ja-jp
+		done
+	done
+done
+
+

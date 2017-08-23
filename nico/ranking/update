@@ -6,9 +6,9 @@ categorys=("all" "g_ent2" "ent" "music" "sing" "play" "dance" "vocaloid" "nicoin
 for type in ${types[@]}; do
 	for period in ${periods[@]}; do
 		for category in ${categorys[@]}; do
-			dirname=/share/www/html/nico/ranking/${type}/${period}/${category}
+			dirname=/share/www/html/nico/ranking/data/${type}/${period}/${category}
 			filename="${dirname}/`date +'%y%m%d%H'`.xml"
-			curl -s -o $filename http://www.nicovideo.jp/ranking/${dirname}?rss=2.0&lang=ja-jp
+			curl -s -o $filename http://www.nicovideo.jp/ranking/${type}/${period}/${category}?rss=2.0&lang=ja-jp
 		done
 	done
 done

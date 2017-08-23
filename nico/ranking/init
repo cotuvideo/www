@@ -7,7 +7,7 @@ for type in ${types[@]}; do
 	for period in ${periods[@]}; do
 		for category in ${categorys[@]}; do
 		#	echo ${type}/${period}/${category}
-			mkdir -p ${type}/${period}/${category}
+			mkdir -p data/${type}/${period}/${category}
 		done
 	done
 done

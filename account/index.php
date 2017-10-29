@@ -144,7 +144,7 @@ while($row = $result->fetch_assoc())
 
 	$url = "http://uad.nicovideo.jp/#ticket-detail";
 	echo "<td>\n";
-	echo "<form method=\"POST\" action=\"get.php\">\n";
+	echo "<form method=\"POST\" action=\"getticket.php\">\n";
 	echo "<input type=\"hidden\" name=\"url\" value=\"$url\">\n";
 	echo "<input type=\"hidden\" name=\"session\" value=\"$user_session\">\n";
 	echo "<input type=\"submit\" value=\"ticket\">\n";

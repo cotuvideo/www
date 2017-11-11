@@ -1,10 +1,11 @@
 <?php
 
 $host = "localhost";
+$port = 3306;
 $user = "user";
 $pass = "";
 $db = "db";
-$tbl = "tbl";
+$tb = "tb";
 
 echo "<html>\n";
 
@@ -22,7 +23,7 @@ echo "</script>\n";
 
 echo "</head>\n";
 
-$mysqli = new mysqli($host, $user, $pass, $db);
+$mysqli = new mysqli($host, $user, $pass, $db, $port);
 if($mysqli->connect_errno)
 {
 	echo $mysqli->connect_error."\n";
@@ -51,7 +52,7 @@ if(isset($_POST{'mail'}))
 	echo "mail=$mail<br>";
 	echo "password=$password<br>";
 	$query =
-	"INSERT INTO $db.$tbl("
+	"INSERT INTO $db.$tb("
 		.  "create_date"
 		.", mail"
 		.", password"
@@ -74,7 +75,7 @@ if(isset($self))
 
 echo "<table border=\"1\">\n";
 
-$query = "desc $tbl";
+$query = "desc $tb";
 $result = $mysqli->query($query) or die($mysqli->error);
 echo "<tr>\n";
 $fields = array("id", "date", "mail", "session", "session_sec", "count", "login", "top", "co", "ticket");
@@ -84,7 +85,7 @@ foreach($fields as &$field)
 }
 echo "</tr>\n";
 
-$query = "select * from $tbl order by id";
+$query = "select * from $tb order by id";
 $result = $mysqli->query($query) or die($mysqli->error);
 
 while($row = $result->fetch_assoc())
@@ -130,6 +131,13 @@ while($row = $result->fetch_assoc())
 	echo "<input type=\"hidden\" name=\"url\" value=\"$url\">\n";
 	echo "<input type=\"hidden\" name=\"session\" value=\"$user_session\">\n";
 	echo "<input type=\"submit\" value=\"top\">\n";
+	echo "</form>\n";
+	echo "</td>\n";
+
+	echo "<td>\n";
+	echo "<form method=\"POST\" action=\"history.php\">\n";
+	echo "<input type=\"hidden\" name=\"user_session\" value=\"$user_session\">\n";
+	echo "<input type=\"submit\" value=\"his\">\n";
 	echo "</form>\n";
 	echo "</td>\n";
 

@@ -1,7 +1,20 @@
 <?php
 
-if(!isset($_POST{'user_session'}))exit(0);
-$user_session = $_POST['user_session'];
+$self = $_SERVER['PHP_SELF'];
+if(isset($_POST['user_session']))
+{
+	$user_session = $_POST['user_session'];
+	setcookie("user_session", $user_session);
+	$link = "<a href=\"$self\" target=\"_blank\">history</a>";
+}
+else
+{
+	if(isset($_COOKIE['user_session']))
+	{
+		$user_session = $_COOKIE['user_session'];
+		$link = "<a href=\"$self\">history</a>";
+	}
+}
 
 $url = "http://www.nicovideo.jp/my/history";
 $options = array("http"=>array("method"=>"GET", "header"=>"Accept-language: ja\r\n"."Cookie: user_session=$user_session\r\n"));
@@ -17,11 +30,15 @@ if($file !== FALSE)
 	echo "<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n";
 	echo "</head>\n";
 
-//	echo $file;
+	echo "<body>\n";
 	preg_match("/<title>\n?(.*)\n?<\/title>/i", $file, $res);
 	if(count($res) >= 2)
 	{
 		echo $res[1]."<br>\n";
+	}
+	if(isset($link))
+	{
+		echo "$link<br>\n";
 	}
 
 	$pat  = '|<div class="outer".*?';
@@ -76,6 +93,7 @@ if($file !== FALSE)
 		}
 		echo "</pre>\n";*/
 	}
+	echo "</body>\n";
 	echo "</html>\n";
 }
 ?>

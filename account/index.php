@@ -78,7 +78,7 @@ echo "<table border=\"1\">\n";
 $query = "desc $tb";
 $result = $mysqli->query($query) or die($mysqli->error);
 echo "<tr>\n";
-$fields = array("id", "date", "mail", "session", "session_sec", "count", "login", "top", "co", "ticket");
+$fields = array("id", "date", "mail", "session", "session_sec", "count", "login", "top", "his", "co", "ticket");
 foreach($fields as &$field)
 {
 	echo "<td>$field</td>\n";

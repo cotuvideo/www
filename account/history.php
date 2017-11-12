@@ -31,11 +31,17 @@ if($file !== FALSE)
 	echo "</head>\n";
 
 	echo "<body>\n";
-	preg_match("/<title>\n?(.*)\n?<\/title>/i", $file, $res);
+	preg_match("/<title>\n?(.*)-.*?<\/title>/i", $file, $res);
+	if(count($res) >= 2)
+	{
+		echo $res[1]."\n";
+	}
+	preg_match('|"accountNumber">(ID:.*?)</p>|s', $file, $res);
 	if(count($res) >= 2)
 	{
 		echo $res[1]."<br>\n";
 	}
+
 	if(isset($link))
 	{
 		echo "$link<br>\n";
@@ -45,24 +51,25 @@ if($file !== FALSE)
 	$pat .= 'data-original=("http://.*?").*?';
 	$pat .= '<span class="videoTime">([\d:]+).*?';
 	$pat .= '<p class="posttime">(.+?:[0-9]+).*?';
-	$pat .= '<span>(.+?)</span>.*?';
+	$pat .= '<span>.+?([\d,]+).+?</span>.*?';
 	$pat .= '<h5><a href="watch/(\w+?)">(.+?)</a></h5>.*?';
 	$pat .= '<ul class="metadata">.*?';
-	$pat .= '<li class="play">(.+?)</li>.*?';
-	$pat .= '<li class="comment">(.+?)</li>.*?';
+	$pat .= '<li class="play">.+?:([\d,]+)</li>.*?';
+	$pat .= '<li class="comment">.+?:([\d,]+)</li>.*?';
 	$pat .= '<li class="mylist">.+?>([\d,]+)</a></li>.*?';
-	$pat .= '<li class="posttime">(.+?)</li>.*?';
+	$pat .= '<li class="posttime">(.+?:\d+).*?</li>.*?';
 	$pat .= '</ul>|s';
 	preg_match_all($pat, $file, $data);
 	$n = count($data[0]);
 	echo "#data[".count($data)."][$n]<br>\n";
+	echo "<table border=\"1\">\n";
 	for($i = 0; $i < $n; $i++)
 	{
-		echo "<hr>\n";
+		echo "<tr>\n";
 		$img = $data[1][$i];
 		$videoTime = $data[2][$i];
 		$viewtime = $data[3][$i];
-		$playtime = $data[4][$i];
+		$viewcount = $data[4][$i];
 		$videoId = $data[5][$i];
 		$title = $data[6][$i];
 		$play = $data[7][$i];
@@ -70,19 +77,20 @@ if($file !== FALSE)
 		$mylist = $data[9][$i];
 		$posttime = $data[10][$i];
 
-		echo "<img src=$img width=128>\n";
-		echo "<br>\n";
-		echo "$videoTime|\n";
-		echo "$viewtime|\n";
-		echo "$playtime\n";
-		echo "<br>\n";
-		echo "$videoId|\n";
-		echo "$title\n";
-		echo "<br>\n";
-		echo "$play|\n";
-		echo "$comment|\n";
-		echo "$mylist|\n";
-		echo "$posttime\n";
+		echo "<td>\n";
+		echo "<img src=$img width=64>\n";
+		echo "</td>\n";
+
+		echo "<td>\n";
+		echo "$videoTime\n";
+		echo "</td>\n";
+
+		echo "<td>\n";
+		echo "$viewtime ($viewcount)<br>\n";
+		echo "$videoId $title<br>\n";
+		echo "v:$play&nbspc:$comment&nbspm:[$mylist]&nbsp$posttime\n";
+		echo "</td>\n";
+		echo "</tr>\n";
 
 /*		echo "<pre>\n";
 		echo "#[$i]\n";
@@ -93,6 +101,7 @@ if($file !== FALSE)
 		}
 		echo "</pre>\n";*/
 	}
+	echo "</table>\n";
 	echo "</body>\n";
 	echo "</html>\n";
 }

@@ -1,0 +1,7 @@
+# centos7
+
+yum --disablerepo=centos-kernel update
+rpm -qa | grep raspberrypi2-kernel
+yum list | grep raspberrypi2-kernel
+
+

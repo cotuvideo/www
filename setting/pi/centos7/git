@@ -1,0 +1,20 @@
+# git
+yum -y install git
+
+ssh-keygen -t rsa
+
+ssh -T git@github.com
+
+git config --global user.name ''
+git config --system user.email ''
+
+git config --system core.editor vi
+git config --system alias.st status
+git config --system alias.co checkout
+git config --system alias.br branch
+git config --system alias.up rebase
+git config --system alias.ci commit
+git config --system alias.di diff
+git config --system alias.glog 'log --graph --date=iso --pretty="format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset" -16'
+git config --global user.name 'cotuvideo'
+git config --global user.email 'cotuvideo@gmail.com'

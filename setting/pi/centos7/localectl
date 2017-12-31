@@ -1,0 +1,5 @@
+# localectl
+
+localectl set-locale LANG=ja_JP.UTF-8
+source /etc/locale.conf
+echo $LANG

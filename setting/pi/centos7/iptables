@@ -1,0 +1,11 @@
+# iptables
+
+systemctl stop firewalld
+systemctl disable firewalld
+
+yum -y install iptables-services
+systemctl start iptables
+systemctl enable iptables
+
+vi /etc/sysconfig/iptables
+

@@ -1,0 +1,5 @@
+# php
+
+yum -y install php
+
+yum list installed | grep php

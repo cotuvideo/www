@@ -1,5 +1,8 @@
 # centos7
 
+wget http://mirror.centos.org/altarch/7/isos/armhfp/CentOS-Userland-7-armv7hl-Minimal-1708-RaspberryPi3.img.xz
+xz -d CentOS-Userland-7-armv7hl-Minimal-1708-RaspberryPi3.img.xz
+
 yum --disablerepo=centos-kernel update
 rpm -qa | grep raspberrypi2-kernel
 yum list | grep raspberrypi2-kernel

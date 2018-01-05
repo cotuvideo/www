@@ -1,0 +1,42 @@
+# mariadb
+
+yum -y install mariadb mariadb-devel mariadb-server
+
+vi /etc/my.cnf
+[client]
+default-character-set = utf8
+[mysqld]
+datadir=/share/lib/mysql
+character-set-server=utf8
+
+# sample conf
+/usr/share/mysql/
+
+systemctl start mariadb.service
+systemctl enable mariadb.service
+ps -ef | grep "mysql" | grep -v "grep"
+
+mysql_secure_installation
+
+GRANT ALL PRIVILEGES ON *.* TO '${user}'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO '${user}'@'%' IDENTIFIED BY '' WITH GRANT OPTION;
+
+show variables like 'char%';
+
+----------------------------------------------------------------
+
+validate_password_policy=LOW
+
+# delete user
+revoke all on ${dbname}.* from ${user}@localhost;
+delete from mysql.user where user like 'unix' and host like 'localhost';
+flush privileges;
+
+# backup
+mysqldump -u root -p -x --all-databases > dump.sql
+mysqldump -u root --password='${passwd}' -x --all-databases > dump.sql
+mysqldump -u root -p mysql > dump.sql
+
+# restore
+mysql -u root -p < dump.sql
+mysql -u root -p mysql < dump.sql

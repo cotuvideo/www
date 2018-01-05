@@ -1,0 +1,8 @@
+# vsftpd
+
+yum -y install vsftpd ftp
+
+vi /etc/vsftpd/vsftpd.conf
+
+systemctrl start vsftpd
+systemctrl enable vsftpd

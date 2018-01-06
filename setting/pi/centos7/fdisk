@@ -1,0 +1,8 @@
+# fdisk
+
+fdisk /dev/mmcblk0
+
+mkfs.ext4 /dev/mmcblk0
+
+blkid /dev/mmcblk0p4
+UUID=1934ca35-c346-479b-b836-edb320f12ecb /share ext4 defaults 0 2

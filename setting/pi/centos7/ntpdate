@@ -1,0 +1,19 @@
+# ntpdate
+
+yum -y install ntpdate
+ntpdate -s -b ntp.nict.jp
+timedatectl set-timezone Asia/Tokyo
+
+iv /etc/systemd/system/ntpdate-update.service
+[Unit]
+Description=NTP update on Boot
+After=network.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/ntpdate -s -b ntp.nict.jp
+
+[Install]
+WantedBy=default.target
+
+systemctl enable ntpdate-update.service

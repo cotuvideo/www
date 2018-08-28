@@ -1,0 +1,4 @@
+# timedatectl
+
+timedatectl list-timezones
+timedatectl set-timezone Asia/Tokyo

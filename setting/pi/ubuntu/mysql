@@ -1,0 +1,10 @@
+# mysql
+
+apt-get -y install mysql-server
+apt-get -y install mysql-client
+
+apt-get -y install php-mysql
+
+CREATE USER hoge;
+GRANT ALL PRIVILEGES ON *.* TO 'hoge'@'%' IDENTIFIED BY '' WITH GRANT OPTION;
+UPDATE mysql.user SET authentication_string=password("") WHERE user='hoge';

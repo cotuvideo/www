@@ -3,7 +3,12 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-	console.info('['+new Date()+'] Requested by '+req.connection.remoteAddress);
+	if(req.method === 'GET' && req.url === '/favicon.ico')
+	{
+		res.end();
+		return;
+	}
+	console.info('['+new Date()+'] '+req.connection.remoteAddress+' '+req.method+' '+req.url);
 	res.writeHead(200, {
 		'Content-Type': 'text/html; charset=utf-8'
 	});
@@ -20,7 +25,7 @@ const server = http.createServer((req, res) => {
 	console.error('['+new Date()+'] Client Error', e);
 });
 
-const port = 80;
+const port = 8000;
 server.listen(port, () => {
 	console.log('['+new Date()+'] Listening on '+port);
 });

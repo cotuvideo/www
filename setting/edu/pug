@@ -1,0 +1,2 @@
+npm install pug@2.0.0-rc.4 --save
+npm install pug-cli -g

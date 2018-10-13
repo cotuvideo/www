@@ -18,3 +18,6 @@ git config --system alias.di diff
 git config --system alias.glog 'log --graph --date=iso --pretty="format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset" -16'
 git config --global user.name 'cotuvideo'
 git config --global user.email 'cotuvideo@gmail.com'
+
+
+git --bare init --shared

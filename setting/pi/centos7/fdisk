@@ -2,6 +2,8 @@
 
 fdisk /dev/mmcblk0
 
+resize2fs /dev/mmcblk0p3
+
 mkfs.ext4 /dev/mmcblk0
 
 blkid /dev/mmcblk0p4

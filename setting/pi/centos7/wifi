@@ -1,0 +1,20 @@
+# wifi
+
+yum -y install NetworkManager-wifi
+yum -y install wpa_supplicant
+systemctl restart NetworkManager.service
+systemctl status NetworkManager.service
+
+nmcli d
+nmcli radio wifi
+nmcli dev wifi list
+
+nmcli d wifi connect [ssid] password [password]
+
+nmcli d disconnect wlan0
+
+vi /etc/sysconfig/network-scripts/ifcfg-wlan0/ifcfg-wlan0
+vi /etc/wpa_supplicant/wpa_supplicant.conf
+
+vi /etc/rc.d/rc.local
+wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -iwlan0 -B

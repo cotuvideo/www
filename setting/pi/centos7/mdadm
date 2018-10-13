@@ -1,0 +1,20 @@
+# mdadm
+
+mdadm --create /dev/md0 --level=raid1 --raid-devices=2 /dev/sda1 /dev/sdb1
+mdadm --manage /dev/md0 --add /dev/sda1
+mdadm --manage /dev/md0 --add /dev/sdb1
+
+mdadm --detail --scan >> /etc/mdadm.conf
+echo MAILADDR root >> /etc/mdadm.conf
+
+mdadm --detail /dev/md0
+cat /etc/mdadm.conf 
+cat /proc/mdstat
+cat /proc/partitions
+
+umount /dev/md0
+mdadm --misc --stop /dev/md0
+mdadm --manage /dev/md0 --remove /dev/sda1
+mdadm --manage /dev/md0 --remove /dev/sdb1
+mdadm --misc --zero-superblock /dev/sda1
+mdadm --misc --zero-superblock /dev/sdb1

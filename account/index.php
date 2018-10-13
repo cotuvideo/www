@@ -1,11 +1,11 @@
 <?php
 
-$host = "localhost";
-$port = 3306;
-$user = "user";
-$pass = "";
-$db = "db";
-$tb = "tb";
+$host = getenv("ACC_HOST");
+$port = getenv("ACC_PORT");
+$user = getenv("DB_USER");
+$pass = getenv("DB_PASS");
+$db = getenv("ACC_DB");
+$tb = getenv("ACC_TB");
 
 echo "<html>\n";
 
@@ -78,7 +78,7 @@ echo "<table border=\"1\">\n";
 $query = "desc $tb";
 $result = $mysqli->query($query) or die($mysqli->error);
 echo "<tr>\n";
-$fields = array("id", "date", "mail", "session", "session_sec", "count", "login", "top", "his", "co", "ticket");
+$fields = array("id", "date", "mail", "session", "count", "login", "top", "his", "co", "ticket");
 foreach($fields as &$field)
 {
 	echo "<td>$field</td>\n";
@@ -109,11 +109,6 @@ while($row = $result->fetch_assoc())
 	echo "<td>\n";
 	echo "<input type=\"text\" id=\"s$id\" value=\"$user_session\" size=\"1\">\n";
 	echo "<button class=\"btn\" data-clipboard-target=\"#s$id\">copy</button>\n";
-	echo "</td>\n";
-
-	echo "<td>\n";
-	echo "<input type=\"text\" id=\"ss$id\" value=\"$$user_session_secure\" size=\"1\">\n";
-	echo "<button class=\"btn\" data-clipboard-target=\"#ss$id\">copy</button>\n";
 	echo "</td>\n";
 
 	echo "<td>$count</td>\n";

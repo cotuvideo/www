@@ -20,6 +20,7 @@ $url = "http://www.nicovideo.jp/my/history";
 $options = array("http"=>array("method"=>"GET", "header"=>"Accept-language: ja\r\n"."Cookie: user_session=$user_session\r\n"));
 $context = stream_context_create($options);
 $file = file_get_contents($url, false, $context);
+//echo $file;exit;//
 if($file !== FALSE)
 {
 	echo "<!DOCTYPE HTML>\n";
@@ -48,7 +49,7 @@ if($file !== FALSE)
 	}
 
 	$pat  = '|<div class="outer".*?';
-	$pat .= 'data-original=("http://.*?").*?';
+	$pat .= 'data-original=("http?s://.*?").*?';
 	$pat .= '<span class="videoTime">([\d:]+).*?';
 	$pat .= '<p class="posttime">(.+?:[0-9]+).*?';
 	$pat .= '<span>.+?([\d,]+).+?</span>.*?';

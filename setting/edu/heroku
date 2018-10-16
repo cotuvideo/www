@@ -1,0 +1,25 @@
+wget -O- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+echo "web: node index.js" > Procfile
+
+vi app.json
+{
+	"name": "Enquetes",
+	"description": "Enquetes for favorite foods.",
+	"repository": "https://github.com/progedu/node-js-http-3016",
+	"logo": "",
+	"keywords": ["node"],
+	"image": "heroku/nodejs"
+}
+
+vi package.json
+"engines": {
+	"node": "8.9.4"
+}
+
+vi index.js
+const port = process.env.PORT || 8000;
+
+git push heroku master-2018:master
+
+heroku logs

@@ -21,3 +21,5 @@ git config --global user.email 'cotuvideo@gmail.com'
 
 
 git --bare init --shared
+
+useradd -d /share/var/lib/git -u 1022 git

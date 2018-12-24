@@ -1,7 +1,14 @@
 #!/bin/bash
 types=("fav" "view" "res" "mylist")
 periods=("hourly" "daily")
-categorys=("all" "g_ent2" "ent" "music" "sing" "play" "dance" "vocaloid" "nicoindies" "g_life2" "animal" "cooking" "nature" "travel" "sport" "lecture" "drive" "history" "g_politics" "g_tech" "science" "tech" "handcraft" "make" "g_culture2" "anime" "game" "jikkyo" "toho" "imas" "radio" "draw" "g_other" "are" "diary" "other")
+categorys=(
+	"all"
+	"g_ent2" "ent" "music" "sing" "play" "dance" "vocaloid" "nicoindies" "asmr" "mmd" "virtual"
+	"g_life2" "animal" "cooking" "nature" "travel" "sport" "lecture" "drive" "history" "train"
+	"g_politics"
+	"g_tech" "science" "tech" "handcraft" "make"
+	"g_culture2" "anime" "game" "jikkyo" "toho" "imas" "radio" "draw" "trpg"
+	"g_other" "are" "diary" "other")
 
 for type in ${types[@]}; do
 	for period in ${periods[@]}; do

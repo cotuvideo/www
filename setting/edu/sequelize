@@ -1,0 +1,6 @@
+# sequelize
+
+npm uninstall sequelize pg pg-hstore
+npm install sequelize@4.33.4 --save
+npm install pg@7.4.1 --save
+npm install pg-hstore@2.3.2 --save

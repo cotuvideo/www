@@ -1,0 +1,8 @@
+# postgresql
+
+sudo apt install -y postgresql-9.5
+
+sudo su - postgres
+psql
+alter role postgres with password 'postgres';
+create database secret_board;

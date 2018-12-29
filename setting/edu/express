@@ -1,0 +1,14 @@
+# express
+
+npm install -g express-generator@4.16.0
+express --view=pug express-study
+DEBUG=express-study:* PORT=8000 npm start
+DEBUG=express-study:*,module:* PORT=8000 npm start
+
+# helmet
+
+npm install helmet@1.1.0 --save
+
+app.js
+var helmet = require('helmet');
+app.use(helmet());

@@ -15,7 +15,7 @@ for type in ${types[@]}; do
 		for category in ${categorys[@]}; do
 			dirname=/share/www/html/nico/ranking/data/${type}/${period}/${category}
 			filename="${dirname}/`date +'%y%m%d%H'`.xml"
-			curl -s -o $filename http://www.nicovideo.jp/ranking/${type}/${period}/${category}?rss=2.0&lang=ja-jp
+			curl -s -o $filename https://www.nicovideo.jp/ranking/${type}/${period}/${category}?rss=2.0&lang=ja-jp
 		done
 	done
 done

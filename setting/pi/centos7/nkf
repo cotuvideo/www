@@ -1,0 +1,9 @@
+# nkf
+
+cd /usr/local/nkf
+wget https://ja.osdn.net/dl/nkf/nkf-2.1.4.tar.gz
+tar xvfz nkf-2.1.4.tar.gz
+cd nkf-2.1.4
+make
+make install
+

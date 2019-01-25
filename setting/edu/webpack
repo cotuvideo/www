@@ -1,0 +1,36 @@
+# webpack
+
+npm install webpack@4.26.1 webpack-cli@3.1.2 @babel/core@7.1.6 @babel/preset-env@7.1.6 babel-loader@8.0.4 --save-dev
+npm install https://github.com/progedu/damage-calc-4006.git --save
+
+vi webpack.config.js
+module.exports = {
+  context: __dirname + '/app',
+  entry: './entry',
+  output: {
+    path: __dirname + '/public/javascripts',
+    filename: 'bundle.js'
+  },
+  mode: 'none',
+  module: {
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      }
+    }]
+  }
+};
+
+vi app/entry.js
+'use strict';
+import dc from 'damage-calc';
+document.writeln(
+  '<p>攻撃力 100, 防御 50, 防御貫通 30 のダメージは、' +
+    dc.effectiveDamage(100, 50, 30) + '</p>');
+
+node_modules/.bin/webpack

@@ -1,0 +1,3 @@
+# ssh
+
+apt -y install openssh-server

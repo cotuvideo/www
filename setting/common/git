@@ -1,0 +1,10 @@
+# git
+
+ssh-keygen -t rsa
+
+ssh -T git@github.com
+
+
+git --bare init --shared
+
+useradd -d /share/var/lib/git -u 1022 git

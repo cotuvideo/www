@@ -1,0 +1,11 @@
+# apache2
+
+apt -y install apache2 libapache2-mod-php
+
+vi /etc/apache2/apache2.conf
+<Directory /share/www/>
+
+vi /etc/apache2/sites-enabled/000-default.conf
+DocumentRoot /share/www/html
+
+service apache2 restart

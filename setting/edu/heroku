@@ -17,9 +17,26 @@ vi package.json
 	"node": "8.9.4"
 }
 
+if (process.env.DATABASE_URL
+  && req.headers['x-forwarded-proto'] === 'http') {
+  util.handleNotFound(req, res);
+}
+
 vi index.js
 const port = process.env.PORT || 8000;
+
+process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/database',
 
 git push heroku master-2018:master
 
 heroku logs
+
+heroku create
+heroku addons:create heroku-postgresql:hobby-dev
+git push heroku master-2018:master
+
+heroku apps:info
+heroku config --app ${appname}
+
+heroku apps:destroy --app $[appname} --confirm $[appname}
+git remote rm heroku

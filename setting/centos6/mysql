@@ -1,0 +1,16 @@
+# mysql
+
+yum -y install mysql mysql-devel mysql-server
+
+vi /etc/my.cnf
+[mysqld]
+datadir=/share/var/lib/mysql
+character-set-server=utf8
+[client]
+default-character-set=utf8
+
+/etc/init.d/mysqld start
+
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'127.0.0.1' IDENTIFIED BY '' WITH GRANT OPTION;
+
+show variables like 'char%';

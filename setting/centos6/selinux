@@ -1,0 +1,4 @@
+# selinux
+
+vi /etc/sysconfig/selinux
+SELINUX=disabled

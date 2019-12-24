@@ -9,6 +9,7 @@ character-set-server=utf8
 [client]
 default-character-set=utf8
 
+chkconfig mysqld on
 /etc/init.d/mysqld start
 
 GRANT ALL PRIVILEGES ON *.* TO 'user'@'127.0.0.1' IDENTIFIED BY '' WITH GRANT OPTION;

@@ -14,6 +14,14 @@ const server = http.createServer((req, res) => {
 	});
 	res.write('<!DOCTYPE html><html lang="js"><body>\n');
 	res.write(req.headers['user-agent']+'<br>\n');
+	if(req.url === '/akuzo')
+	{
+		res.write(`USER=${process.env.USER}<br>\n`);
+		res.write(`LOGNAME=${process.env.LOGNAME}<br>\n`);
+		res.write(`LV_ENABLE=${process.env.LV_ENABLE}<br>\n`);
+		res.write(`CCV_ENABLE=${process.env.CCV_ENABLE}<br>\n`);
+		res.write(`NICO=${process.env.NICO}<br>\n`);
+	}
 	res.write('</body></html>\n');
 	
 	res.end();

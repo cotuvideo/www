@@ -1,0 +1,21 @@
+# mysql
+apt install -y mysql-client mysql-server
+apt install -y php-mysql
+
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+dir         = /share/lib/mysql
+#bind-address           = 127.0.0.1
+[client]
+default-character-set=utf8
+
+vi /etc/apparmor.d/usr.sbin.mysqld
+  /share/lib/mysql/ r,
+  /share/lib/mysql/** rwk,
+
+service apparmor restart
+service mysql restart
+
+GRANT ALL PRIVILEGES ON *.* TO 'hoge'@'%' IDENTIFIED BY '****' WITH GRANT OPTION;
+UPDATE mysql.user SET authentication_string=password('') WHERE Host='localhost' AND User='hoge';
+FLUSH PRIVILEGES;
+

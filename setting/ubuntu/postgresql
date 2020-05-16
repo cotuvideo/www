@@ -1,0 +1,8 @@
+# postgresql
+
+apt -y install postgresql
+
+CREATE ROLE user WITH PASSWORD '****';
+ALTER ROLE user LOGIN;
+ALTER ROLE user SUPERUSER;
+GRANT ALL ON table TO user;

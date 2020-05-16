@@ -12,4 +12,5 @@ vi /var/lib/pgsql/data/postgresql.conf
 
 sudo su - postgres
 psql
-alter role postgres with password 'postgres';
+ALTER ROLE postgres WITH PASSWORD 'postgres';
+CREATE ROLE nico WITH SUPERUSER CREATEROLE CREATEDB REPLICATION BYPASSRLS LOGIN PASSWORD '****';

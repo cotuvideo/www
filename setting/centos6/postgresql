@@ -1,10 +1,14 @@
 # postgresql
 
-yum -y install postgresql-server
+yum localinstall -y https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6.10-x86_64/pgdg-redhat95-9.5-3.noarch.rpm
+yum install postgresql95-server
 
-/etc/init.d/postgresql initdb
-/etc/init.d/postgresql start
-chkconfig postgresql on
+/etc/init.d/postgresql-9.5 initdb
+/etc/init.d/postgresql-9.5 start
+chkconfig postgresql-9.5 on
+
+vi /var/lib/pgsql/data/postgresql.conf
+
 
 sudo su - postgres
 psql

@@ -1,0 +1,5 @@
+# mocha
+
+npm install mocha@4.0.1 --save-dev
+
+node_modules/.bin/mocha -h

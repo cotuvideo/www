@@ -16,7 +16,7 @@ else
 	}
 }
 
-$url = "http://www.nicovideo.jp/my/history";
+$url = "https://www.nicovideo.jp/my/history";
 $options = array("http"=>array("method"=>"GET", "header"=>"Accept-language: ja\r\n"."Cookie: user_session=$user_session\r\n"));
 $context = stream_context_create($options);
 $file = file_get_contents($url, false, $context);
@@ -48,7 +48,7 @@ if($file !== FALSE)
 		echo "$link<br>\n";
 	}
 
-	$pat  = '|<div class="outer".*?';
+	$pat  = '|<div class="outer VideoItem".*?';
 	$pat .= 'data-original=("http?s://.*?").*?';
 	$pat .= '<span class="videoTime">([\d:]+).*?';
 	$pat .= '<p class="posttime">(.+?:[0-9]+).*?';

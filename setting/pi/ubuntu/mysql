@@ -1,21 +1,23 @@
 # mysql
 
-apt-get -y install mysql-server
-apt-get -y install mysql-client
-
-apt-get -y install php-mysql
+apt -y install mysql-server mysql-client
+apt -y install php-mysql
 
 vi /etc/mysql/mysql.conf.d/mysqld.cnf
 datadir         = /share/lib/mysql
-character-set-server=utf8
+character-set-server=utf8mb4
 #bind-address           = 127.0.0.1
 [client]
-default-character-set=utf8
+default-character-set=utf8mb4
 
-/etc/init.d/mysql start
+vi /etc/apparmor.d/usr.sbin.mysqld
+  /share/lib/mysql/ r,
+  /share/lib/mysql/** rwk,
 
-show variables like 'char%';
+systemctl restart apparmor
+systemctl start mysql
 
-CREATE USER hoge;
 GRANT ALL PRIVILEGES ON *.* TO 'hoge'@'%' IDENTIFIED BY '' WITH GRANT OPTION;
-UPDATE mysql.user SET authentication_string=password("") WHERE user='hoge';
+UPDATE mysql.user SET authentication_string=PASSWORD('') WHERE host='localhost' AND user='hoge';
+
+SHOW VARIABLES LIKE 'char%';

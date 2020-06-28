@@ -1,0 +1,9 @@
+# ssh
+
+apt install-y openssh-server
+
+vi /etc/ssh/sshd_config
+PermitRootLogin prohibit-password
+
+systemctl start ssh
+systemctl enable ssh

@@ -1,0 +1,7 @@
+#!/bin/bash
+db=~/$(cat ../dir)/cookies.sqlite
+
+sqlite3 ${db} <<EOD
+.separator ,
+SELECT baseDomain,name,value,host FROM moz_cookies WHERE baseDomain='nicovideo.jp' AND name LIKE '%user_session%';
+EOD

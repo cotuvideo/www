@@ -1,0 +1,4 @@
+# akashic
+
+npm install -g @akashic/akashic-cli
+npm install -g @akashic/akashic-sandbox

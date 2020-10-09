@@ -1,0 +1,15 @@
+# mysql
+
+yum -y install mysql mysql-devel mysql-server
+
+vi /etc/my.cnf.d/mysql-server.cnf
+[mysqld]
+datadir=/share/lib/mysql
+
+systemctl enable mysqld
+systemctl start mysqld
+
+SHOW VARIABLES LIKE 'char%';;
+
+CREATE USER 'hoge'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'hoge'@'localhost' WITH GRANT OPTION;

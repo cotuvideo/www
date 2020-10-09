@@ -1,0 +1,4 @@
+# selinux
+
+vi /etc/selinux/config
+SELINUXTYPE=disabled

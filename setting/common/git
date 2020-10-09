@@ -8,3 +8,7 @@ ssh -T git@github.com
 git --bare init --shared
 
 useradd -d /share/var/lib/git -u 1022 git
+
+
+git clone --mirror git@github.com:old/hoge.git
+git push --mirror git@github.com:new/hoge.git

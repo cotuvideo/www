@@ -1,0 +1,4 @@
+# wifi
+yum install -y wpa_supplicant
+vi /etc/sysconfig/network-scripts/ifcfg-wlan0
+wpa_passphrase ssidname accesskey

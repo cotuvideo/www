@@ -1,0 +1,10 @@
+# mysql
+
+apt install -y mysql-client mysql-server
+
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+[mysqld]
+character-set-server=utf8mb4
+#bind-address       = 127.0.0.1
+[client]
+default-character-set=utf8mb4

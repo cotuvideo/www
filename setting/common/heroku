@@ -1,0 +1,9 @@
+# heroku
+
+heroku config
+heroku config:get ENV_VAR
+heroku config:set ENV_VAR="value"
+
+heroku run bash
+
+heroku plugins:install https://github.com/naaman/heroku-vim
